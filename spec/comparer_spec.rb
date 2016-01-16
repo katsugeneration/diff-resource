@@ -1,11 +1,9 @@
 require 'spec_helper'
 
 describe DiffResource do
-	@@Resource = Struct.new "Resource", :key, :value
-
 	it "check compare result case same key and value resource" do
-		new_resources = [@@Resource.new("test", "new")]
-		old_resources = [@@Resource.new("test", "new")]
+		new_resources = [Struct::Resource.new("test", "new")]
+		old_resources = [Struct::Resource.new("test", "new")]
 		comparer = DiffResource::Comparer.new new_resources, old_resources
 
 		expect(comparer.diffs.length).to eql(1)
@@ -16,8 +14,8 @@ describe DiffResource do
 	end
 
 	it "check compare result case same key and different value resource" do
-		new_resources = [@@Resource.new("test", "new")]
-		old_resources = [@@Resource.new("test", "old")]
+		new_resources = [Struct::Resource.new("test", "new")]
+		old_resources = [Struct::Resource.new("test", "old")]
 		comparer = DiffResource::Comparer.new new_resources, old_resources
 
 		expect(comparer.diffs.length).to eql(1)
@@ -28,8 +26,8 @@ describe DiffResource do
 	end
 
 	it "check compare result case differenr key resource" do
-		new_resources = [@@Resource.new("test", "new")]
-		old_resources = [@@Resource.new("differ", "old")]
+		new_resources = [Struct::Resource.new("test", "new")]
+		old_resources = [Struct::Resource.new("differ", "old")]
 		comparer = DiffResource::Comparer.new new_resources, old_resources
 
 		expect(comparer.diffs.length).to eql(1)
@@ -40,8 +38,8 @@ describe DiffResource do
 	end
 
 	it "mix pattern" do
-		new_resources = [@@Resource.new("test1", "new"), @@Resource.new("test2", "new"), @@Resource.new("test3", "new")]
-		old_resources = [@@Resource.new("test1", "new"), @@Resource.new("test2", "old"), @@Resource.new("test3_differ", "old")]
+		new_resources = [Struct::Resource.new("test1", "new"), Struct::Resource.new("test2", "new"), Struct::Resource.new("test3", "new")]
+		old_resources = [Struct::Resource.new("test1", "new"), Struct::Resource.new("test2", "old"), Struct::Resource.new("test3_differ", "old")]
 		comparer = DiffResource::Comparer.new new_resources, old_resources
 
 		expect(comparer.diffs.length).to eql(3)
