@@ -1,7 +1,7 @@
 
 module DiffResource
 	class Parser
-		@@resource = Struct.new "Resource", :key, :value, :status
+		@@Resource = Struct.new "Resource", :key, :value
 
 		def parse str
 
