@@ -6,8 +6,11 @@ rvm:
 
 cache:
   directories:
-    - vendor/bundle
+    - ../bundle
 
 addons:
   code_climate:
     repo_token: 9f9b4d284b06c2827320a8c0a736a8b51e6fbe705d8485d96fc08e7bc2301dc8
+
+notifications:
+  email: false
