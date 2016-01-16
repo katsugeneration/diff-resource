@@ -1,4 +1,9 @@
 # DiffResource
+[![Dependency Status](https://gemnasium.com/katsugeneration/diff-resource.svg)](https://gemnasium.com/katsugeneration/diff-resource)
+[![Build Status](https://travis-ci.org/katsugeneration/diff-resource.svg?branch=master)](https://travis-ci.org/katsugeneration/diff-resource)
+[![Code Climate](https://codeclimate.com/github/katsugeneration/diff-resource/badges/gpa.svg)](https://codeclimate.com/github/katsugeneration/diff-resource)
+[![Test Coverage](https://codeclimate.com/github/katsugeneration/diff-resource/badges/coverage.svg)](https://codeclimate.com/github/katsugeneration/diff-resource/coverage)
+
 ## Installation
 
 Add this line to your application's Gemfile:
