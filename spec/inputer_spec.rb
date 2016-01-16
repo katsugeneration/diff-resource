@@ -28,4 +28,22 @@ describe DiffResource do
 		expect(@parser).to receive(:parse).exactly(0).times
 		inputer.parseFile 'None File'
 	end
+
+	it "add resources when parseFiles call" do
+		inputer = DiffResource::Inputer.new @parser
+		ret = inputer.parseFiles './spec/test_file', 'test.txt'
+		expect(ret).to eql([1, 2])
+	end
+
+	it "no resources when parseFiles none extension" do
+		inputer = DiffResource::Inputer.new @parser
+		ret = inputer.parseFiles './spec/test_file', '*.js'
+		expect(ret).to eql([])
+	end
+
+	it "add resources when parseFiles call case existing nest folder" do
+		inputer = DiffResource::Inputer.new @parser
+		ret = inputer.parseFiles './spec/test_file', '*.txt'
+		expect(ret).to eql([1, 2, 1, 2])
+	end
 end

@@ -23,16 +23,19 @@ module DiffResource
 			return ret
 		end
 
-		def inpuFiles dir, extension
-			if FileTest.directory? dir then
-				Dir.foreach dir do |file|
-					if /\.*#{extention}$/.match file
-						inputFiles file, extention
-					end
+		def parseFiles path, extension
+			if FileTest.directory? path then
+				Dir.foreach path do |file|
+					next if /^\.+$/ =~ file
+					parseFiles File.absolute_path(file, path), extension
 				end
-			elsif FileTest.file? dir then
-				self.resources += parseFile dir
+			elsif FileTest.file? path then
+				if /#{extension.gsub("*.", ".*\.")}$/ =~ path then
+					@resources += parseFile path
+				end
 			end
+
+			return @resources
 		end
 	end
 end
