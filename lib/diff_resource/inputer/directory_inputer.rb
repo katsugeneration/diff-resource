@@ -1,6 +1,6 @@
 
 module DiffResource
-	class Inputer
+	class DirectoryInputer
 		def parse_file file_name, parser
 			ret = []
 			begin

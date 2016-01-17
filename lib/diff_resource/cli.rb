@@ -15,8 +15,8 @@ EOS
 		method_option :compare, :aliases => "-c", :enum => %w(dir git), :default => "dir", :desc => "comparison target type. other directory or git hash"
 		def create target_dir = nil, comparison_target = nil, target_file = nil
 			parser = DiffResource::ParserFactory.create options[:type]
-			inputer = DiffResource::Inputer.new
-			comparison_inputer = DiffResource::InputerFactory.create options[:compare]
+			inputer = DiffResource::DirectoryInputer.new
+			comparison_inputer = DiffResource::DirectoryInputerFactory.create options[:compare]
 
 			new_resources = inputer.parse_files target_dir, target_file, parser
 			old_resources = comparison_inputer.parse_files comparison_target, target_file, parser

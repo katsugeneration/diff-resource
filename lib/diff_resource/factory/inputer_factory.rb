@@ -3,7 +3,7 @@ module DiffResource
 		def self.create type
 			return case type
 			when "dir"
-				DiffResource::Inputer.new
+				DiffResource::DirectoryInputer.new
 			else
 				fail ArgumentError.new, 'undefined parser type'
 			end

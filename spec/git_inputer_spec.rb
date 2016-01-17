@@ -3,7 +3,8 @@ require 'spec_helper'
 describe DiffResource do
 	before do
 		@parser = double("parser", :parse => [1, 2])
-		@inputer = DiffResource::Inputer.new
+		@inputer = DiffResource::GitInputer.new
+		@inputer.reference = "develop"
 	end
 
 	it "call parser with text contents when Inputer parse file" do
@@ -19,6 +20,12 @@ describe DiffResource do
 	it "donot call parser when file donot exist" do
 		expect(@parser).to receive(:parse).exactly(0).times
 		@inputer.parse_file 'None File', @parser
+	end
+
+	it "donot call parser when ref donot exist" do
+		@inputer.reference = "devel"
+		expect(@parser).to receive(:parse).exactly(0).times
+		@inputer.parse_file './spec/test_file/test.txt', @parser
 	end
 
 	it "add resources when parse_files call" do
