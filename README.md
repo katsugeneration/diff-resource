@@ -1,4 +1,5 @@
 # DiffResource
+[![Gem Version](https://badge.fury.io/rb/diff_resource.svg)](https://badge.fury.io/rb/diff_resource)
 [![Dependency Status](https://gemnasium.com/katsugeneration/diff-resource.svg)](https://gemnasium.com/katsugeneration/diff-resource)
 [![Build Status](https://travis-ci.org/katsugeneration/diff-resource.svg?branch=master)](https://travis-ci.org/katsugeneration/diff-resource)
 [![Code Climate](https://codeclimate.com/github/katsugeneration/diff-resource/badges/gpa.svg)](https://codeclimate.com/github/katsugeneration/diff-resource)
