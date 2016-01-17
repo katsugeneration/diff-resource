@@ -2,10 +2,10 @@ require 'thor'
 
 module DiffResource
 	class Cli < Thor
-		desc "create [directory] [comparison] [file] <options>", <<-EOS
+		desc "create <directory> <comparison> <file> [<options>]", <<-EOS
 create resource diff file
 - directory:		resource file root path
-- comparison:		compare directory path or git hash
+- comparison:		compare directory path or git object
 - file:			resource file name format
 			ex) test.resource, *.resource, *-en.resource
 
@@ -15,8 +15,14 @@ EOS
 		method_option :compare, :aliases => "-c", :enum => %w(dir git), :default => "dir", :desc => "comparison target type. other directory or git hash"
 		def create target_dir = nil, comparison_target = nil, target_file = nil
 			parser = DiffResource::ParserFactory.create options[:type]
-			inputer = DiffResource::DirectoryInputer.new
-			comparison_inputer = DiffResource::DirectoryInputerFactory.create options[:compare]
+			inputer = DiffResource::InputerFactory.create "dir"
+			comparison_inputer = DiffResource::InputerFactory.create options[:compare]
+
+			# when git pattern, comparison target is same to new resources and comprison_target is git object
+			if options[:compare] == "git"
+				comparison_inputer.reference = comparison_target
+				comparison_target = target_dir
+			end
 
 			new_resources = inputer.parse_files target_dir, target_file, parser
 			old_resources = comparison_inputer.parse_files comparison_target, target_file, parser

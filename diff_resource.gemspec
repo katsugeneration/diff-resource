@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["katsu.generation.888@gmail.com"]
 
   spec.summary       = "Output resource file diffs"
-  spec.description   = "Output resource file diffs.You can set resource directory, resource type, output file path."
+  spec.description   = "Output resource file diffs.You can set resource directory, resource type, output file path, etc..."
   spec.homepage      = "https://github.com/katsugeneration/diff-resource"
   spec.license       = "MIT"
 
@@ -22,7 +22,16 @@ Gem::Specification.new do |spec|
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files = `git ls-files -z`.split("\x0").reject do |file|
+    file =~ %r{^(?:
+    spec/.*
+    |Gemfile
+    |Rakefile
+    |\.gitignore
+    |\.rubocop.yml
+    |\.travis.yml
+    )$}x
+  end
   spec.bindir        = "bin"
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]

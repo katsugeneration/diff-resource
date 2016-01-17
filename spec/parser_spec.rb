@@ -9,7 +9,7 @@ describe DiffResource do
 			ret = parser.parse file.read
 		end
 
-		expect(ret.length).to eql(1)
+		expect(ret.length).to eql(2)
 		expect(ret[0].key).to eql("string1")
 		expect(ret[0].value).to eql("hello")
 	end

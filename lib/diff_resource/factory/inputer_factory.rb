@@ -4,6 +4,8 @@ module DiffResource
 			return case type
 			when "dir"
 				DiffResource::DirectoryInputer.new
+			when "git"
+				DiffResource::GitInputer.new
 			else
 				fail ArgumentError.new, 'undefined parser type'
 			end
