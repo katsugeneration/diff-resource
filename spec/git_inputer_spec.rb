@@ -4,7 +4,7 @@ describe DiffResource do
 	before do
 		@parser = double("parser", :parse => [1, 2])
 		@inputer = DiffResource::GitInputer.new
-		@inputer.reference = "develop"
+		@inputer.reference = "HEAD"
 	end
 
 	it "call parser with text contents when Inputer parse file" do
