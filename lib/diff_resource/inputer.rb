@@ -29,9 +29,7 @@ module DiffResource
 					parse_files File.absolute_path(file, path), extension
 				end
 			elsif FileTest.file? path
-				if /#{extension.gsub("*.", ".*\.")}$/ =~ path then
-					@resources += parse_file path
-				end
+				@resources += parse_file path if /#{extension.gsub("*.", ".*\.")}$/ =~ path
 			end
 
 			return @resources

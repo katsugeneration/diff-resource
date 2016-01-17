@@ -2,5 +2,6 @@
 
 $LOAD_PATH.unshift(File.dirname(File.realpath(__FILE__)) + '/../lib')
 require "diff_resource"
+require "diff_resource/cli"
 
-p "Install Suceess"
+DiffResource::Cli.start ARGV

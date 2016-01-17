@@ -14,7 +14,7 @@ module DiffResource
 					break
 				end
 
-				unless ret.nil? then next ret end
+				next ret unless ret.nil?
 
 				@@struct_diff.new(new_resource.key, new_resource.value, "", :new)
 			end
