@@ -9,13 +9,13 @@ module DiffResource
 
 				REXML::XPath.match(resx, "/root/data").map do |data|
 					type = data.attribute("type")
-					next if type != nil
+					next unless type.nil?
 
 					key = data.attribute("name").value
 					value_element = data.elements["value"]
 					value = value_element ? value_element.text : nil
 
-					ret << @@Resource.new(key, value)
+					ret << @@resource.new(key, value)
 				end
 			rescue => e
 				p e
@@ -23,5 +23,5 @@ module DiffResource
 
 			return ret
 		end
- 	end
+	end
 end

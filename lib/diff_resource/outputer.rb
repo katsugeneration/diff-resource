@@ -1,17 +1,15 @@
 
 module DiffResource
 	class Outputer
-		def output diffs, fileName
-			begin
-				open fileName, "w" do |file|
-					file.write "key,value,old,status\n"
-					diffs.each do |diff|
-						file.write("#{diff.key},#{diff.value},#{diff.old},#{diff.status}\n")
-					end
+		def output diffs, file_name
+			open file_name, "w" do |file|
+				file.write "key,value,old,status\n"
+				diffs.each do |diff|
+					file.write("#{diff.key},#{diff.value},#{diff.old},#{diff.status}\n")
 				end
-			rescue => e
-				p e
 			end
+		rescue => e
+			p e
 		end
 	end
 end

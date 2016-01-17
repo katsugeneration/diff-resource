@@ -1,7 +1,6 @@
 
 module DiffResource
 	class Inputer
-
 		def initialize parser
 			@parser = parser
 			@resources = []
@@ -10,10 +9,10 @@ module DiffResource
 		attr_reader :parser
 		attr_accessor :resources
 
-		def parseFile fileName
+		def parse_file file_name
 			ret = []
 			begin
-				open fileName do |file|
+				open file_name do |file|
 					ret = parser.parse file.read
 				end
 			rescue => e
@@ -23,15 +22,15 @@ module DiffResource
 			return ret
 		end
 
-		def parseFiles path, extension
-			if FileTest.directory? path then
+		def parse_files path, extension
+			if FileTest.directory? path
 				Dir.foreach path do |file|
 					next if /^\.+$/ =~ file
-					parseFiles File.absolute_path(file, path), extension
+					parse_files File.absolute_path(file, path), extension
 				end
-			elsif FileTest.file? path then
+			elsif FileTest.file? path
 				if /#{extension.gsub("*.", ".*\.")}$/ =~ path then
-					@resources += parseFile path
+					@resources += parse_file path
 				end
 			end
 

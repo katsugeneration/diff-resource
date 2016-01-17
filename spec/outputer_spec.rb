@@ -17,6 +17,6 @@ describe DiffResource do
 		outputer = DiffResource::Outputer.new
 		outputer.output diffs, "./test/test.csv"
 
-		expect(FileTest.exist? "./test/test.csv").to be_falsy
+		expect(FileTest.exist?("./test/test.csv")).to be_falsy
 	end
 end
