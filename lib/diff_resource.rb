@@ -1,5 +1,6 @@
 require "diff_resource/version"
 
+require "diff_resource/inputer/inputer"
 require "diff_resource/inputer/directory_inputer"
 require "diff_resource/inputer/git_inputer"
 

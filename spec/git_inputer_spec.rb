@@ -33,8 +33,18 @@ describe DiffResource do
 		expect(ret).to eql([1, 2])
 	end
 
-	it "no resources when parse_files none extension" do
+	it "add resources when parse_files with * contained extension" do
+		ret = @inputer.parse_files './spec/test_file', '*t.txt', @parser
+		expect(ret).to eql([1, 2])
+	end
+
+	it "no resources when parse_files with none extension" do
 		ret = @inputer.parse_files './spec/test_file', '*.js', @parser
+		expect(ret).to eql([])
+	end
+
+	it "no resources when parse_files with bad extension" do
+		ret = @inputer.parse_files './spec/test_file', '.txt', @parser
 		expect(ret).to eql([])
 	end
 

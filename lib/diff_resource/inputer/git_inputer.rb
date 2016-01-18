@@ -1,6 +1,6 @@
 require 'pathname'
 module DiffResource
-	class GitInputer
+	class GitInputer < Inputer
 		attr_accessor :reference
 
 		def parse_file file_name, parser
@@ -22,7 +22,7 @@ module DiffResource
 					resources += parse_files file_path, extension, parser
 				end
 			elsif file? path
-				resources += parse_file path, parser if %r{^.*\/#{extension}$} =~ path
+				resources += parse_file path, parser if match? extension, path
 			end
 
 			return resources
