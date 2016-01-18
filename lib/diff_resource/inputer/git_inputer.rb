@@ -1,4 +1,4 @@
-
+require 'pathname'
 module DiffResource
 	class GitInputer
 		attr_accessor :reference
@@ -17,7 +17,9 @@ module DiffResource
 			if directory? path
 				contents = `git ls-tree --name-only #{reference}:#{path}`
 				contents.split("\n").each do |file|
-					resources += parse_files (path + "/" + file), extension, parser
+					base = Pathname.getwd
+					file_path = Pathname(File.expand_path(file, path)).relative_path_from(base).to_s
+					resources += parse_files file_path, extension, parser
 				end
 			elsif file? path
 				resources += parse_file path, parser if %r{^.*\/#{extension}$} =~ path

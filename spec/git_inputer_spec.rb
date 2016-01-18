@@ -42,4 +42,9 @@ describe DiffResource do
 		ret = @inputer.parse_files './spec/test_file', '*.txt', @parser
 		expect(ret).to eql([1, 2, 1, 2])
 	end
+
+	it "add resources regardless root directory format" do
+		ret = @inputer.parse_files 'spec/', '*.txt', @parser
+		expect(ret).to eql([1, 2, 1, 2])
+	end
 end
