@@ -8,7 +8,7 @@ module DiffResource
 					ret = parser.parse file.read
 				end
 			rescue => e
-				p e.message
+				puts e.message
 			end
 
 			return ret

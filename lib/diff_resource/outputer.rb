@@ -9,7 +9,7 @@ module DiffResource
 				end
 			end
 		rescue => e
-			p e.message
+			puts e.message
 		end
 	end
 end

@@ -18,7 +18,7 @@ EOS
 			inputer = DiffResource::InputerFactory.create "dir"
 			comparison_inputer = DiffResource::InputerFactory.create options[:compare]
 
-			# when git pattern, comparison target is same to new resources and comprison_target is git object
+			# in git mode, comparison dir is same to new resources and comprison_target is git object
 			if options[:compare] == "git"
 				comparison_inputer.reference = comparison_target
 				comparison_target = target_dir

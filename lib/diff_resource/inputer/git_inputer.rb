@@ -13,13 +13,13 @@ module DiffResource
 
 		def parse_files path, extension, parser
 			resources = []
+			base = Pathname.getwd
 
 			if directory? path
-				contents = `git ls-tree --name-only #{reference}:#{path}`
+				contents = `git ls-tree --name-only #{reference}:#{path}` # ls-tree command bad work on non root dir
 				contents.split("\n").each do |file|
-					base = Pathname.getwd
-					file_path = Pathname(File.expand_path(file, path)).relative_path_from(base).to_s
-					resources += parse_files file_path, extension, parser
+					relative_file_path = Pathname(File.expand_path(file, path)).relative_path_from(base).to_s
+					resources += parse_files relative_file_path, extension, parser
 				end
 			elsif file? path
 				resources += parse_file path, parser if match? extension, path

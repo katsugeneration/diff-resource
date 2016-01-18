@@ -18,7 +18,7 @@ module DiffResource
 					ret << @@resource.new(key, value)
 				end
 			rescue => e
-				p e.message
+				puts e.message
 			end
 
 			return ret

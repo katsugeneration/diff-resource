@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-output your resource file's diff list, you execute under command
+To output your resource file's diff list, you run under command
 
 Usage:
   ```bash
@@ -40,8 +40,9 @@ Arguments:
 - comparison:		compare directory path or git hash
 - file:			resource file name format ex) test.resource, \*.resource, \*-en.resource
 
+You should run on git root directory when using git mode
 
-Show detail, you execute under command
+To show detail, you run
 ```bash
 diff_resource help create
 ```
