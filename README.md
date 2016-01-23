@@ -27,18 +27,34 @@ To output your resource file's diff list, you run under command
 
 Usage:
   ```bash
-diff_resource create <directory> <comparison> <file> [<options>] -t, --type=TYPE
+diff_resource create <directory> <comparison> <file> <type> [<options>]
   ```
 
 Options:
-- -t, --type=TYPE          : resource file type
 - -o, [--output=OUTPUT]    : output file path.
 - -c, [--compare=COMPARE]  : comparison target type. other directory or git object
+- -s, [--setting=SETTING]  : setting file path
 
 Arguments:
 - directory:		resource file root path
 - comparison:		compare directory path or git hash
 - file:			resource file name format ex) test.resource, \*.resource, \*-en.resource
+- type:			resource file type. you set custom type in .diffresource.yml
+
+
+To create custom resource type and set custom default option, you  create .diffresource.yml following
+```yaml
+types:
+  custom-resource : # custom resource type name
+    format: "json"  # file format. xml, json, yaml are enable value
+    root : "data"   # resources object name
+    key : "key"     # resource name
+    value : "value" # resource value
+
+comparison: "dir"   # custom comparison value
+
+output: "./dir"     # custom output value
+```
 
 You should run on git root directory when using git mode
 

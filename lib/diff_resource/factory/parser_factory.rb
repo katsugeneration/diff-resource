@@ -5,6 +5,8 @@ module DiffResource
 			return case type["format"]
 			when "resx"
 				DiffResource::ResxParser.new
+			when "xml"
+				DiffResource::XmlParser.new
 			when "json"
 				DiffResource::JsonParser.new type
 			else

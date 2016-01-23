@@ -9,6 +9,7 @@ require "diff_resource/outputer"
 require "diff_resource/comparer"
 
 require "diff_resource/parser/parser"
+require "diff_resource/parser/xml_parser"
 require "diff_resource/parser/resx_parser"
 require "diff_resource/parser/json_parser"
 
