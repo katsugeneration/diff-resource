@@ -24,6 +24,24 @@ describe DiffResource do
 		expect(ret[0].value).to eql("hello")
 	end
 
+	it "parse json with key value pair" do
+		parser = DiffResource::JsonParser.new({ :root => "root.data", :key => "*" })
+		ret = parser.parse <<-EOS
+{
+	"root" :{
+		 "data" : {
+			"string1" : "hello",
+			"string2" : "hellohello"
+		}
+	}
+}
+		EOS
+
+		expect(ret.length).to eql(2)
+		expect(ret[0].key).to eql("string1")
+		expect(ret[0].value).to eql("hello")
+	end
+
 	it "error occured when parse resx" do
 		ret = @parser.parse <<-EOS
 {

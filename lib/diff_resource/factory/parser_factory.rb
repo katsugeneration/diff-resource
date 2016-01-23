@@ -9,6 +9,8 @@ module DiffResource
 				DiffResource::XmlParser.new
 			when "json"
 				DiffResource::JsonParser.new type
+			when "yaml"
+				DiffResource::YamlParser.new type
 			else
 				fail ArgumentError.new, 'undefined parser type'
 			end

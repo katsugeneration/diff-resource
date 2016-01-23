@@ -47,7 +47,7 @@ EOS
 		end
 
 		def self.add_resx_format settings
-			settings.types["resx"] = { "format" => "resx", "root" => "data", "key" => "name", "value" => "value.text" }
+			settings.types["resx"] = { "format" => "resx", "root" => "data", "key" => "name", "value" => "value" }
 			return settings
 		end
 

@@ -1,0 +1,4 @@
+root:
+  data:
+    string1: "hello"
+    string2: "hellohello"
