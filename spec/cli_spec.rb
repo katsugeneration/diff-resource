@@ -70,7 +70,7 @@ describe DiffResource do
 	end
 
 	it "cli option yaml" do
-		DiffResource::Cli.start %w(create spec spec test.yaml yaml-custom -c dir -o spec/output.csv -s spec/test_file/.diffresource.yml)
+		DiffResource::Cli.start %w(create spec spec test.yml yaml-custom -c dir -o spec/output.csv -s spec/test_file/.diffresource.yml)
 		CSV.foreach "spec/output.csv" do |row|
 			next if row[0] == "key"
 			expect(row[3]).to eql("completed")

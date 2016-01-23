@@ -4,9 +4,9 @@ module DiffResource
 		@@resource = Struct.new "Resource", :key, :value
 
 		def initialize options = {}
-			@root = options[:root] || ""
-			@key = options[:key] || ""
-			@value = options[:value] || ""
+			@root = options["root"] || ""
+			@key = options["key"] || ""
+			@value = options["value"] || ""
 		end
 
 		def nested_hash_access hash, path

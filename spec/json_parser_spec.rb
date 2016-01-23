@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiffResource do
 	before do
-		@parser = DiffResource::JsonParser.new({ :root => "root.data", :key => "key", :value => "value" })
+		@parser = DiffResource::JsonParser.new({ "root" => "root.data", "key" => "key", "value" => "value" })
 	end
 
 	it "parse json" do
@@ -25,7 +25,7 @@ describe DiffResource do
 	end
 
 	it "parse json with key value pair" do
-		parser = DiffResource::JsonParser.new({ :root => "root.data", :key => "*" })
+		parser = DiffResource::JsonParser.new({ "root" => "root.data", "key" => "*" })
 		ret = parser.parse <<-EOS
 {
 	"root" :{

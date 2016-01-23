@@ -3,7 +3,7 @@ require 'spec_helper'
 describe DiffResource do
 	before do
 		@resx_parser = DiffResource::ResxParser.new
-		@parser = DiffResource::XmlParser.new({ :root => "resource", :key => "key", :value => "value" })
+		@parser = DiffResource::XmlParser.new({ "root" => "resource", "key" => "key", "value" => "value" })
 	end
 
 	it "error occured when parse resx" do

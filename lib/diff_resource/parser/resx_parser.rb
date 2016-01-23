@@ -2,7 +2,7 @@
 module DiffResource
 	class ResxParser < XmlParser
 		def initialize
-			super({ :root => "data", :key => "name", :value => "value" })
+			super({ "root" => "data", "key" => "name", "value" => "value" })
 		end
 
 		def parsre_target? item
