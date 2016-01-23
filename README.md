@@ -23,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-To output your resource file's diff list, you run under command
+To output your resource file's diff list, you run under command.
 
 Usage:
   ```bash
@@ -39,16 +39,24 @@ Arguments:
 - directory:		resource file root path
 - comparison:		compare directory path or git hash
 - file:			resource file name format ex) test.resource, \*.resource, \*-en.resource
-- type:			resource file type. you set custom type in .diffresource.yml
+- type:			resource file type. you can set custom type in .diffresource.yml
 
+You should run on git root directory when using git mode.
 
-To create custom resource type and set custom default option, you  create .diffresource.yml following
+To show detail, you run under command.
+```bash
+diff_resource help create
+```
+
+## Settings File Format
+
+To create custom resource type and set custom default option value, you create ".diffresource.yml" as the following.
 ```yaml
 types:
   custom-resource : # custom resource type name
-    format: "json"  # file format. xml, json, yaml are enable value
-    root : "data"   # resources object name
-    key : "key"     # resource name
+    format: "xml"  # file format. xml, json, yaml are enable value
+    root : "data"   # resources object name. if object is nested, you set path split "."
+    key : "key"     # resource name. * means resources object is hash
     value : "value" # resource value
 
 comparison: "dir"   # custom comparison value
@@ -56,12 +64,66 @@ comparison: "dir"   # custom comparison value
 output: "./dir"     # custom output value
 ```
 
-You should run on git root directory when using git mode
+It is enable to parse like these format resources.
 
-To show detail, you run
-```bash
-diff_resource help create
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<data key="string1">
+		<value>hello</value>
+	</data>
+	<data key="string2">
+		<value>hello hello</value>
+	</data>
+</root>
 ```
+
+Case resources object is nested, you should set path split "." as the following.
+
+```yaml
+types:
+  custom-resource :
+    format: "json"
+    root : "root.data"
+    key : "key"
+    value : "value"
+```
+
+It is enable to parse like these format resources.
+```json
+{
+	"root" :{
+		"data" : [
+			{
+				"key" : "string1",
+				"value" : "hello"
+			},
+			{
+				"key" : "string2",
+				"value" : "hello hello"
+			}
+		]
+	}
+}
+```
+
+Case resources object is hash, you should set "\*" to key as the following.
+```yaml
+types:
+  custom-resource :
+    format: "yaml"
+    root : "root.data"
+    key : "*"
+```
+
+It is enable to parse like these format resources.
+```yaml
+root:
+  data:
+    string1: "hello"
+    string2: "hello hello"
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/katsugeneration/diff-resource/fork )
