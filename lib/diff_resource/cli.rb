@@ -16,6 +16,7 @@ EOS
 		method_option :comparison, :aliases => "-c", :enum => %w(dir git), :desc => "comparison target type. other directory or git hash"
 		method_option :setting, :aliases => "-s", :default => "./.diffresource.yml", :desc => "setting file path"
 		def create target_dir = nil, comparison_target = nil, target_file = nil, target_type = nil
+			p target_type
 			option = DiffResource::Cli.make_options options, target_type
 
 			parser = DiffResource::ParserFactory.create option[:type]

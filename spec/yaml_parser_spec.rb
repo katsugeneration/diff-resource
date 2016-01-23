@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiffResource do
 	before do
-		@parser = DiffResource::YamlParser.new({ :root => "root.data", :key => "key", :value => "value" })
+		@parser = DiffResource::YamlParser.new({ "root" => "root.data", "key" => "key", "value" => "value" })
 	end
 
 	it "parse yaml" do
@@ -19,7 +19,7 @@ root:
 	end
 
 	it "parse yaml with key vaue pair" do
-		parser = DiffResource::YamlParser.new({ :root => "root.data", :key => "*" })
+		parser = DiffResource::YamlParser.new({ "root" => "root.data", "key" => "*" })
 		ret = parser.parse <<-EOS
 root:
   data:

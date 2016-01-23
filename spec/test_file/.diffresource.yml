@@ -1,14 +1,14 @@
 types:
-  json-custom :
+  json-custom:
     format: "json"
-    root : "data"
-    key : "key"
-    value : "value"
+    root: "data"
+    key: "key"
+    value: "value"
 
-  yaml-custom :
+  yaml-custom:
     format: "yaml"
-    root : "root.data"
-    key : "*"
+    root: "root.data"
+    key: "*"
 
 comparison: "dir"
 
