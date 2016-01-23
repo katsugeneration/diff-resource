@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe DiffResource do
 	before do
-		@parser = DiffResource::JsonParser.new({:root => "root.data", :key => "key", :value => "value"})
+		@parser = DiffResource::JsonParser.new({ :root => "root.data", :key => "key", :value => "value" })
 	end
 
 	it "parse json" do

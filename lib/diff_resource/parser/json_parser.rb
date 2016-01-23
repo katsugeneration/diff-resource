@@ -13,11 +13,11 @@ module DiffResource
 
 			begin
 				json = JSON.parse str
-				root = nested_hash_parse json, @root
+				root = nested_hash_access json, @root
 
 				root.each do |item|
-					key = nested_hash_parse item, @key
-					value = nested_hash_parse item, @value
+					key = nested_hash_access item, @key
+					value = nested_hash_access item, @value
 					ret << @@resource.new(key, value)
 				end
 			rescue => e

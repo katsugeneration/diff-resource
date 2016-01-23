@@ -12,5 +12,7 @@ require "diff_resource/parser/parser"
 require "diff_resource/parser/resx_parser"
 require "diff_resource/parser/json_parser"
 
+require "diff_resource/settings.rb"
+
 require "diff_resource/factory/parser_factory"
 require "diff_resource/factory/inputer_factory"

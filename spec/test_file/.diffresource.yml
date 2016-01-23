@@ -1,0 +1,10 @@
+types:
+  name :
+    format: "json"
+    root : "data"
+    key : "key"
+    value : "value"
+
+comparison: "dir"
+
+output: "./dir"
