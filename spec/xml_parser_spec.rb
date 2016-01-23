@@ -7,7 +7,7 @@ describe DiffResource do
 	end
 
 	it "error occured when parse resx" do
-		ret = @parser.parse "<xml><undeined xml"
+		ret = @parser.parse "<?xml ?><undeined xml"
 
 		expect(ret).to eql([])
 	end

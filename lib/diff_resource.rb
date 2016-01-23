@@ -12,6 +12,7 @@ require "diff_resource/parser/parser"
 require "diff_resource/parser/xml_parser"
 require "diff_resource/parser/resx_parser"
 require "diff_resource/parser/json_parser"
+require "diff_resource/parser/yaml_parser"
 
 require "diff_resource/settings.rb"
 
